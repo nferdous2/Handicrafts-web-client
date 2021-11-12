@@ -1,10 +1,10 @@
-.service-body{
+.product-body{
     height: 380px;
     box-sizing: border-box;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgb(133, 63, 101);
 }
-.service-body:hover{
+.product-body:hover{
     transform: scale(1.1);
     transition: transform 1s ease-in-out;
     color: rgb(146, 44, 78);

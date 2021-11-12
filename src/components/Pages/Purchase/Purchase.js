@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import purchase from '../../Shared/Images/purchase.png'
-// import useAuth from '../../../hooks/useAuth'
 import './Purchase.css'
 const Purchase = () => {
-    // const { user } = useAuth();
-    const [services, setServices] = useState([])
+    const [products, setProducts] = useState([])
     useEffect(() => {
         fetch('http://localhost:5000/products')
             .then(res => res.json())
-            .then((data) => setServices(data))
+            .then((data) => setProducts(data))
     }, [])
 
     return (
         <div >
+
             <form className=" form-container mt-5 mb-3 p-3">
                 <h2 className="text-center">Place Order</h2>
                 <div>

@@ -10,10 +10,10 @@ import Footer from './components/Shared/Footer/Footer';
 import NotFound from './components/Shared/NotFound/NotFound';
 import Explore from './components/Pages/Explore/Explore';
 import Review from './components/Pages/Review/Review';
-import Services from './components/Pages/Services/Services';
 import Login from './components/Pages/Login/Login';
 import Home from './components/Home/Home/Home';
 import Purchase from './components/Pages/Purchase/Purchase';
+import Products from './components/Pages/Products/Products';
 // import AuthProvider from './Contexts/AuthProvider';
 function App() {
   return (
@@ -34,8 +34,8 @@ function App() {
           <Route path="/explore">
             <Explore />
           </Route>
-          <Route path="/services">
-            <Services />
+          <Route path="/products">
+            <Products />
           </Route>
           <Route path="/login">
             <Login />

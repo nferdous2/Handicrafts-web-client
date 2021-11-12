@@ -1,19 +1,14 @@
 import Button from '@restart/ui/esm/Button';
-import React, { useState } from 'react';
+import React from 'react';
 import { Card, Col } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import './Service.css'
-const Service = ({ service }) => {
-    const [btn, setBtn] = useState({})
-    const { id, name, description, img, price } = service;
-    const handle = (e) => {
-        setBtn(e.target.value);
-    };
+import './Product.css'
+const Product = ({ product }) => {
+    const { _id, name, description, img, price } = product;
     return (
-
         <div>
             <Col>
-                <Card className="service-body mb-4 p-2">
+                <Card className="product-body mb-4 p-2">
                     <Card.Img variant="top" style={{ height: '10rem' }} src={img} />
                     <Card.Body>
                         <Card.Title>{name}</Card.Title>
@@ -22,7 +17,7 @@ const Service = ({ service }) => {
                         </Card.Text>
                         <Card.Text>Price: {price} $
                         </Card.Text>
-                        <NavLink to={`/purchase/${id}`} ><Button className='btn-success' onClick={handle}>Buy now</Button></NavLink>
+                        <NavLink to={`/purchase/${_id}`} ><Button className='btn-success'>Buy now</Button></NavLink>
                     </Card.Body>
                 </Card>
             </Col>
@@ -30,4 +25,4 @@ const Service = ({ service }) => {
     );
 };
 
-export default Service;
+export default Product;

@@ -1,27 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { Row } from 'react-bootstrap';
-import Service from '../Service/Service';
-const Services = () => {
+import Product from '../Product/Product';
 
-    const [services, setServices] = useState([])
+const Products = () => {
+    const [products, setproducts] = useState([])
     useEffect(() => {
         fetch('http://localhost:5000/products')
             .then(res => res.json())
             .then((data) => {
-                setServices(data.slice(0, 6))
+                setproducts(data.slice(0, 6))
             });
     }, [])
-
     return (
         <div>
-            <h2 className="service-text mt-5 text-center">Our Products</h2>
+            <h2 className="mt-5 text-center">Our Products</h2>
             <Row xs={1} md={3} className=" gx-4 gy-5 pt-3 px-5">
                 {
-                    services.map(service => <Service service={service}></Service>)
+                    products.map(product => <Product product={product}></Product>)
                 }
             </Row>
         </div>
     );
 };
 
-export default Services;
+export default Products;

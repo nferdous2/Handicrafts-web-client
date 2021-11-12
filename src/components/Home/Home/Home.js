@@ -6,15 +6,15 @@ import chooseimg from '../../Shared/Images/choiceImg.png'
 import delivery from '../../Shared/Images/delivery.png'
 import offer from '../../Shared/Images/offer.png'
 import Review from '../../Pages/Review/Review';
-import Services from '../../Pages/Services/Services';
 import Banner from '../Banner/Banner';
 import './Home.css'
+import Products from '../../Pages/Products/Products';
 
 const Home = () => {
     return (
         <div className="homePage">
             <Banner />
-            <Services />
+            <Products />
             <Review />
             {/* why buy our product part */}
             <div className='choose'>

@@ -17,8 +17,8 @@ const Header = () => {
                             <NavLink to="/home" className='nav-style fs-5 fw-bold text-decoration-none' activeClassName="selected">
                                 Home
                             </NavLink>
-                            <NavLink to="/services" className='nav-style fs-5 fw-bold text-decoration-none' activeClassName="selected">
-                                Our Services
+                            <NavLink to="/products" className='nav-style fs-5 fw-bold text-decoration-none' activeClassName="selected">
+                                Our Products
                             </NavLink>
                             <NavLink to="/explore" className='nav-style fs-5 fw-bold text-decoration-none' activeClassName="selected">
                                 Explore
