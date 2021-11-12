@@ -1,0 +1,15 @@
+
+.go-back {
+    padding: 10px 20px;
+    color: hsl(330, 85%, 5%);
+    letter-spacing: 4px;
+    font-size: 20px;
+    transition: 0.2s;
+}
+.go-back:hover {
+    color: #255784;
+    background: #2196f3;
+    box-shadow: 0 0 10px #5ACBC2, 0 0 40px #5ACBC2, 0 0 80px #5ACBC2;
+    transition-delay: 0.1s;
+    color: rgb(167, 36, 167);
+} 
