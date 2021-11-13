@@ -12,7 +12,7 @@ import Products from '../../Pages/Products/Products';
 
 const Home = () => {
     return (
-        <div className="homePage">
+        <div className="homePage" id="home">
             <Banner />
             <Products />
             <Review />

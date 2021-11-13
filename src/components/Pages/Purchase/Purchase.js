@@ -1,14 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth'
 import purchase from '../../Shared/Images/purchase.png'
 import './Purchase.css'
 const Purchase = () => {
-    const [products, setProducts] = useState([])
-    useEffect(() => {
-        fetch('http://localhost:5000/products')
-            .then(res => res.json())
-            .then((data) => setProducts(data))
-    }, [])
+    const { user } = useAuth();
+    const [productName, setProductName] = useState("");
+    const [productPrice, setProductPrice] = useState("")
+    const handleProductName = (e) => {
+        setProductName(e.target.value);
+    };
+    const handlePrice = (e) => {
+        setProductPrice(e.target.value);
+    };
+    const handleAdd = () => {
+        console.log({ productName, productPrice });
+        const data = { productName, productPrice };
+
+        fetch("http://localhost:5000/myOrders", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(data),
+        })
+            .then((res) => res.json())
+            .then((result) => console.log(result));
+    };
 
     return (
         <div >
@@ -20,19 +36,18 @@ const Purchase = () => {
                 </div>
                 {/* <!-- Email input --> */}
                 <div className="form-outline mb-4 p-2">
-                    {/* {user.displayName} */}
                     <input type="text" name="" id="" className="form-control" placeholder="User Name" />
                 </div>
                 <div className="form-outline mb-4 p-2">
-                    {/* {user.email} */}
+                    {user.email}
                     <input type="email" id="form3Example3" className="form-control text-bold" placeholder="Your Email" />
                 </div>
 
                 <div className="form-outline mb-4 p-2">
-                    <input type="text" name="" id="" className="form-control" placeholder="Product name" />
+                    <input type="text" name="" id="" className="form-control" placeholder="Product name" onChange={handleProductName} />
                 </div>
                 <div className="form-outline mb-4 p-2">
-                    <input type="number" name="" id="" className="form-control" placeholder="Price" />
+                    <input type="number" name="" id="" className="form-control" placeholder="Price" onChange={handlePrice} />
                 </div>
 
                 <div className="form-outline mb-4 p-2">
@@ -43,7 +58,7 @@ const Purchase = () => {
                 </div>
                 <br />
                 <Link to="/home">
-                    <button className="btn btn-success mt-3">
+                    <button className="btn btn-success mt-3" onClick={handleAdd}>
                         Add
                     </button>
                 </Link>

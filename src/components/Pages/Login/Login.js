@@ -1,33 +1,43 @@
-import Button from '@restart/ui/esm/Button';
 import React from 'react';
 import { Card } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import './Login.css'
 import loginImg from '../../Shared/Images/login.png'
+import useAuth from '../../../hooks/useAuth';
 const Login = () => {
+    const { handleEmailChange, handlePasswordChange, loginHandle } = useAuth()
     return (
         <div>
+
             <Card style={{ width: '23rem' }} className="login-page mb-5 mt-5">
                 <Card.Img variant="top" style={{ height: '15rem' }} src={loginImg} />
                 <Card.Body className="login-body">
-                    <Card.Text>
-                        <h2 className="text-center">Please Log in</h2>
 
-                        {/* <!-- Email input --> */}
-                        <div className="form-outline mb-4 p-2">
-                            <input type="email" id="form3Example3" className="form-control" />
-                            <label className="form-label" for="form3Example3">Email address</label>
-                        </div>
+                    <Card.Text >
+                        <h2 className="text-center mb-2">Please Log in</h2>
 
-                        {/* <!-- Password input --> */}
-                        <div className="form-outline mb-4 p-2">
-                            <input type="password" id="form3Example4" className="form-control" />
-                            <label className="form-label" for="form3Example4">Password</label>
-                        </div>
+                        <form onSubmit={loginHandle}>
+                            <input
+                                onChange={handleEmailChange}
+                                className="form-control mb-4 p-2"
+                                type="email"
+                                name="email"
+                                placeholder="Enter your Email"
+                            />
+                            <br />
+                            <input
+                                onChange={handlePasswordChange}
+                                className="form-control mb-4 p-2"
+                                type="password"
+                                name="password"
+                                placeholder="Enter your Password"
+                            />
+                            <input
+                                className="login-btn"
+                                type="submit"
+                                value="Login"
+                            />
+                        </form>
                     </Card.Text>
-                    <Link to="/home">
-                        <Button variant="primary" className="login-btn">Login</Button>
-                    </Link>
                 </Card.Body>
             </Card>
         </div>
