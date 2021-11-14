@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 const MyOrders = () => {
     const [product, setProduct] = useState([]);
     useEffect(() => {
-        fetch("http://localhost:5000/products")
+        fetch("https://fast-chamber-11448.herokuapp.com/products")
             .then((res) => res.json())
             .then((result) => setProduct(result));
     }, []);
@@ -10,7 +10,7 @@ const MyOrders = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure ,you want to delete');
         if (proceed) {
-            const url = `http://localhost:5000/products/${id}`;
+            const url = `https://fast-chamber-11448.herokuapp.com/products/${id}`;
             fetch(url, {
                 mathod: 'DELETE'
             })

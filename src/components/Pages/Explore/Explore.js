@@ -5,7 +5,7 @@ import Product from '../Product/Product';
 const Explore = () => {
     const [products, setproducts] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('https://fast-chamber-11448.herokuapp.com/products')
             .then(res => res.json())
             .then((data) => {
                 setproducts(data.slice(0, 10))

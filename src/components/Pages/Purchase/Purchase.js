@@ -17,7 +17,7 @@ const Purchase = () => {
         console.log({ productName, productPrice });
         const data = { productName, productPrice };
 
-        fetch("http://localhost:5000/products", {
+        fetch("https://fast-chamber-11448.herokuapp.com/products", {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(data),
