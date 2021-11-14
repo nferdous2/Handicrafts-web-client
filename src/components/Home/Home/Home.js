@@ -14,6 +14,7 @@ const Home = () => {
     return (
         <div className="homePage" id="home">
             <Banner />
+            {/* products */}
             <Products />
             <Review />
             {/* why buy our product part */}

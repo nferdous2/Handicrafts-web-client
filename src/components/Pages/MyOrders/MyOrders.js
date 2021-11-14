@@ -6,7 +6,7 @@ const MyOrders = () => {
             .then((res) => res.json())
             .then((result) => setProduct(result));
     }, []);
-    //DELETE AN UseR
+    //DELETE A product
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure ,you want to delete');
         if (proceed) {

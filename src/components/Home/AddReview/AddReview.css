@@ -1,0 +1,7 @@
+.add-review{
+    margin: auto;
+    padding: 5px;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 10px gray;
+    background-color: rgb(85, 138, 138);
+}

@@ -18,6 +18,9 @@ import Dashboard from './components/Pages/Dashboard/Dashboard';
 import AuthProvider from './Contexts/AuthProvider';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import MyOrders from './components/Pages/MyOrders/MyOrders';
+import Register from './components/Pages/Register/Register';
+import MakeAdmin from './components/Pages/MakeAdmin/MakeAdmin';
+import AddReview from './components/Home/AddReview/AddReview';
 function App() {
   return (
     <div className="App">
@@ -34,6 +37,9 @@ function App() {
             <Route path="/review">
               <Review />
             </Route>
+            <Route path="/addreview">
+              <AddReview />
+            </Route>
             <Route path="/explore">
               <Explore />
             </Route>
@@ -43,14 +49,20 @@ function App() {
             <Route path="/login">
               <Login />
             </Route>
+            <Route path="/register">
+              <Register />
+            </Route>
             <Route path="/myOrders">
               <MyOrders />
             </Route>
             <PrivateRoute path="/purchase">
               <Purchase />
             </PrivateRoute>
-            <PrivateRoute Route path="/dashboard">
+            <PrivateRoute path="/dashboard">
               <Dashboard />
+            </PrivateRoute>
+            <PrivateRoute path="/makeadmin">
+              <MakeAdmin />
             </PrivateRoute>
             <Route path="*">
               <NotFound />

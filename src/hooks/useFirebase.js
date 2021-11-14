@@ -1,4 +1,4 @@
-import { getAuth, signOut, onAuthStateChanged, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useState, useEffect } from 'react';
 import initializeAuthentication from './../Firebase/firebase.init';
 
@@ -6,40 +6,42 @@ initializeAuthentication();
 
 const useFirebase = () => {
     const [user, setUser] = useState({});
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
     const [error, setError] = useState("");
-
+    const [admin, setAdmin] = useState(false);
     const auth = getAuth();
-    const handleEmailChange = (e) => {
-        setEmail(e.target.value);
-    };
-    const handlePasswordChange = (e) => {
-        if (e.target.value.length < 6) {
-            console.error("password must need to be at leaset 6 characters");
-            return;
-        } else {
-            setPassword(e.target.value);
-        }
-    };
 
-
-    const loginHandle = (e) => {
-        e.preventDefault();
+    //Registration part handle
+    const handleRegister = (email, password, name, history) => {
         createUserWithEmailAndPassword(auth, email, password)
-            .then(result => {
-                const { email, displayName } = result.user
-                const userInfo = {
-                    name: displayName,
-                    email: email,
-                };
-                setUser(userInfo)
-                setError("");
-
+            .then((userCredential) => {
+                setError('');
+                const newUser = { email, displayName: name };
+                setUser(newUser);
+                saveUser(email, name);
+                updateProfile(auth.currentUser, {
+                    displayName: name
+                })
+                    .then(() => { }).catch((error) => {
+                    });
+                history.replace('/');
             })
-            .catch(error => {
+            .catch((error) => {
+                setError(error.message);
+                console.log(error);
+            })
+    }
+    //log in handle
+    const loginHandle = (email, password, location, history) => {
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                const destination = location?.state?.from || '/';
+                history.replace(destination);
+                setError('');
+            })
+            .catch((error) => {
                 setError(error.message);
             })
+
     }
     useEffect(() => {
         const unsubscribed = onAuthStateChanged(auth, user => {
@@ -53,16 +55,34 @@ const useFirebase = () => {
         return () => unsubscribed;
     }, [])
 
+    useEffect(() => {
+        fetch(`http://localhost:5000/users${user.email}`)
+            .then(res => res.json())
+            .then(data => setAdmin(data.admin))
+    }, [user.email])
+
+    //log out button
     const logOut = () => {
         signOut(auth)
             .then(() => { })
     }
-    console.log(user);
+    const saveUser = (email, displayName) => {
+        const user = { email, displayName };
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then()
+    }
     return {
         user,
+        admin,
+        handleRegister,
         logOut,
-        handleEmailChange,
-        handlePasswordChange,
+        error,
         loginHandle,
     }
 }

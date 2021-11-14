@@ -1,8 +1,10 @@
 import { faStar, faStarHalf, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
+
 import './Review.css'
 const Review = () => {
+
     return (
         <div className="p-5">
             <h1>
@@ -85,7 +87,6 @@ const Review = () => {
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     );

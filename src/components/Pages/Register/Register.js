@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
-import { Alert, Card } from 'react-bootstrap';
-import './Login.css'
+import { Card } from 'react-bootstrap';
 import loginImg from '../../Shared/Images/login.png'
 import useAuth from '../../../hooks/useAuth';
 import { Link, useHistory, useLocation } from 'react-router-dom';
-const Login = () => {
-    const { user, loginHandle } = useAuth()
+const Register = () => {
     const [loginData, setLoginData] = useState({});
+    const { handleRegister, user } = useAuth()
     const location = useLocation();
     const history = useHistory();
     const handleSubmit = e => {
-        loginHandle(loginData.email, loginData.password, location, history);
+        handleRegister(loginData.email, loginData.password, location, history);
         e.preventDefault();
     }
 
@@ -23,7 +22,6 @@ const Login = () => {
     }
     return (
         <div>
-
             <Card style={{ width: '23rem' }} className="login-page mb-5 mt-5">
                 <Card.Img variant="top" style={{ height: '15rem' }} src={loginImg} />
                 <Card.Body className="login-body">
@@ -32,6 +30,13 @@ const Login = () => {
                         <h2 className="text-center mb-2">Please Log in</h2>
 
                         <form onSubmit={handleSubmit}>
+                            <input
+                                onChange={handleChange}
+                                className="form-control mb-4 p-2"
+                                type="name"
+                                name="name"
+                                placeholder="Enter your Name"
+                            />
                             <input
                                 onChange={handleChange}
                                 className="form-control mb-4 p-2"
@@ -50,16 +55,12 @@ const Login = () => {
                             <input
                                 className="login-btn"
                                 type="submit"
-                                value="Login"
+                                value="Register"
                             />
-                            {user?.email &&
-                                <Alert severity="success">Logged In successfully!</Alert>
-                            }
-
                         </form>
-                        <p className="text-white">Are You New User? </p>
-                        <Link to="/register">
-                            <h5 className="text-white text-decoration none">Please,Register</h5>
+                        <p>Already have an account? </p>
+                        <Link to="/login">
+                            <h5>Please,Login</h5>
                         </Link>
 
                     </Card.Text>
@@ -69,4 +70,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;

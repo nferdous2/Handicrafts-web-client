@@ -17,7 +17,7 @@ const Purchase = () => {
         console.log({ productName, productPrice });
         const data = { productName, productPrice };
 
-        fetch("http://localhost:5000/myOrders", {
+        fetch("http://localhost:5000/products", {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(data),
@@ -57,7 +57,7 @@ const Purchase = () => {
                     <input type="number" name="" id="" className="form-control" placeholder="Give Your PhoneNumber" />
                 </div>
                 <br />
-                <Link to="/home">
+                <Link to="/addreview">
                     <button className="btn btn-success mt-3" onClick={handleAdd}>
                         Add
                     </button>
