@@ -23,7 +23,7 @@ const Header = () => {
                         {user?.email ?
                             <Nav>
                                 <Nav.Link as={Link} to="/dashboard"><p className="nav-style fs-5 fw-bold text-decoration-none">Dashboard</p></Nav.Link>
-                                <Nav.Link as={Link} to="/myorders"><p className="nav-style fs-5 fw-bold text-decoration-none">My Orders</p></Nav.Link>
+                                <Nav.Link as={Link} to="/admin"><p className="nav-style fs-5 fw-bold text-decoration-none">Admin</p></Nav.Link>
                                 <Nav.Link onClick={logOut} className="nav-style fs-5 fw-bold text-decoration-none" >Logout</Nav.Link>
 
                             </Nav> :
@@ -31,6 +31,7 @@ const Header = () => {
                                 <p className="nav-style fs-5 fw-bold text-decoration-none">LogIn</p>
                             </Link>
                         }
+
                     </Navbar.Collapse>
                 </Container>
             </Navbar>

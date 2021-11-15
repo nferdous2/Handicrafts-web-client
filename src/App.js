@@ -21,6 +21,7 @@ import MyOrders from './components/Pages/MyOrders/MyOrders';
 import Register from './components/Pages/Register/Register';
 import MakeAdmin from './components/Pages/MakeAdmin/MakeAdmin';
 import AddReview from './components/Home/AddReview/AddReview';
+import Admin from './components/Home/Admin/Admin';
 function App() {
   return (
     <div className="App">
@@ -36,6 +37,9 @@ function App() {
             </Route>
             <Route path="/review">
               <Review />
+            </Route>
+            <Route path="/admin">
+              <Admin />
             </Route>
             <Route path="/addreview">
               <AddReview />
