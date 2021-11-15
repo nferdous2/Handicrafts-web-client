@@ -1,8 +1,10 @@
 import React from 'react';
 import { Col, ListGroup, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 import './Dashboard.css'
 const Dashboard = () => {
+    const { logOut } = useAuth()
     function clicked() {
         alert('Payment System comming Soon');
     }
@@ -18,8 +20,11 @@ const Dashboard = () => {
                                 <ListGroup.Item action >My Orders </ListGroup.Item>
                             </Link>
                             <Link to="/addreview">
-                                <ListGroup.Item action >Review </ListGroup.Item>
+                                <ListGroup.Item action to="/addreview">Review </ListGroup.Item>
                             </Link>
+
+                            <ListGroup.Item action onClick={logOut}>Log Out </ListGroup.Item>
+
                         </ListGroup>
                     </Col>
                 </Row>

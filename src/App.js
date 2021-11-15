@@ -22,6 +22,7 @@ import Register from './components/Pages/Register/Register';
 import MakeAdmin from './components/Pages/MakeAdmin/MakeAdmin';
 import AddReview from './components/Home/AddReview/AddReview';
 import Admin from './components/Home/Admin/Admin';
+import AddProduct from './components/Pages/AddProduct/AddProduct';
 function App() {
   return (
     <div className="App">
@@ -56,10 +57,13 @@ function App() {
             <Route path="/register">
               <Register />
             </Route>
-            <Route path="/myOrders">
+            <PrivateRoute path="/addProduct">
+              <AddProduct />
+            </PrivateRoute>
+            <PrivateRoute path="/myOrders">
               <MyOrders />
-            </Route>
-            <PrivateRoute path="/purchase">
+            </PrivateRoute>
+            <PrivateRoute path="/purchase/:productId">
               <Purchase />
             </PrivateRoute>
             <PrivateRoute path="/dashboard">

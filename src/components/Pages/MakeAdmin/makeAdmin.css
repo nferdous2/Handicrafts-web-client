@@ -1,0 +1,12 @@
+.admin-body{
+    color:rgb(232, 241, 248);
+    background-color: #427a7a;
+    color:black;
+   
+}
+.submit-btn{
+    background-color: rgb(238, 177, 117);
+    border-radius: 5px;
+    width: 80px;
+    box-shadow: 0px 0px 10px gold;
+}

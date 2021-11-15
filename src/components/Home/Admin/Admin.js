@@ -1,28 +1,38 @@
 import React from 'react';
+import { Col, ListGroup, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
-
+import './Admin.css'
 const Admin = () => {
-    const { admin } = useAuth();
+    const { admin, logOut, user } = useAuth();
     return (
-        <div>
-            <div className="row">
-                <div className="col-md-6">
+        <div className="table-settings">
+            <div className="mb-4 mt-4 p-5 w-75">
+                <Row className="justify-content-between align-items-center">
+                    <Col xs={9} lg={5}>
+                        <ListGroup>
+                            <Link to="/myOrders">
+                                <ListGroup.Item action >Manage All Orders </ListGroup.Item>
+                            </Link>
+                            <Link to="/addProduct">
+                                <ListGroup.Item action >Add Product </ListGroup.Item>
+                            </Link>
 
-                    <Link to="/makeAdmin">
-                        <p>Make An Admin</p>
-                    </Link>
+                            {user?.admin ?
+                                <Link to="/makeAdmin">
+                                    <ListGroup.Item action >Make Admin </ListGroup.Item>
+                                </Link>
+                                :
+                                <p>You are not an admin</p>
+                            }
+                            <ListGroup.Item action onClick={logOut}>Log Out </ListGroup.Item>
 
-                    <Link to="/myOrders">
-                        <p> Manage All Orders</p>
-                    </Link>
-
-                </div>
-                <div className="col-md-6">
-                    <div className="side">
-                    </div>
-                </div>
+                        </ListGroup>
+                    </Col>
+                </Row>
             </div>
+
+
         </div>
     );
 };

@@ -1,67 +1,48 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import useAuth from '../../../hooks/useAuth'
-import purchase from '../../Shared/Images/purchase.png'
+
+import React, { useEffect, useState } from 'react';
+import { useForm } from "react-hook-form";
+import { useParams } from 'react-router';
+import useAuth from '../../../hooks/useAuth';
+import axios from 'axios'
 import './Purchase.css'
+
 const Purchase = () => {
-    const { user } = useAuth();
-    const [productName, setProductName] = useState("");
-    const [productPrice, setProductPrice] = useState("")
-    const handleProductName = (e) => {
-        setProductName(e.target.value);
-    };
-    const handlePrice = (e) => {
-        setProductPrice(e.target.value);
-    };
-    const handleAdd = () => {
-        console.log({ productName, productPrice });
-        const data = { productName, productPrice };
-        fetch("https://fast-chamber-11448.herokuapp.com/products", {
-            method: "POST",
-            headers: { "content-type": "application/json" },
-            body: JSON.stringify(data),
-        })
-            .then((res) => res.json())
-            .then((result) => console.log(result));
-    };
+    const [product, setProduct] = useState([])
+    const { register, handleSubmit, reset } = useForm();
+    const { user } = useAuth()
+    const { productId } = useParams()
+
+    useEffect(() => {
+        fetch(`https://fast-chamber-11448.herokuapp.com/products/${productId}`)
+            .then(res => res.json())
+            .then(data => setProduct(data))
+    }, [product])
+
+    // POST DATA TO SERVER
+    const onSubmit = data => {
+        axios.post('https://fast-chamber-11448.herokuapp.com/myOrders', data)
+            .then(res => {
+                if (res.data.insertedId) {
+                    alert('Added successfully')
+                    reset()
+                }
+            })
+        console.log(data);
+    }
 
     return (
-        <div >
-
-            <form className=" form-container mt-5 mb-3 p-3">
-                <h2 className="text-center">Place Order</h2>
-                <div>
-                    <img src={purchase} className="w-25" alt="" />
-                </div>
-                {/* <!-- Email input --> */}
-                <div className="form-outline mb-4 p-2">
-                    <input type="text" name="" id="" className="form-control" placeholder="User Name" />
-                </div>
-                <div className="form-outline mb-4 p-2">
-                    {user.email}
-                    <input type="email" id="form3Example3" className="form-control text-bold" placeholder="Your Email" />
-                </div>
-
-                <div className="form-outline mb-4 p-2">
-                    <input type="text" name="" id="" className="form-control" placeholder="Product name" onChange={handleProductName} />
-                </div>
-                <div className="form-outline mb-4 p-2">
-                    <input type="number" name="" id="" className="form-control" placeholder="Price" onChange={handlePrice} />
-                </div>
-
-                <div className="form-outline mb-4 p-2">
-                    <input type="text" name="" id="" className="form-control" placeholder="Your Address" />
-                </div>
-                <div className="form-outline mb-4 p-2">
-                    <input type="number" name="" id="" className="form-control" placeholder="Give Your PhoneNumber" />
-                </div>
-                <br />
-                <Link to="/addreview">
-                    <button className="btn btn-success mt-3" onClick={handleAdd}>
-                        Add
-                    </button>
-                </Link>
-            </form >
+        <div>
+            <div>
+                <h2>PURCHASE PRODUCT</h2>
+                <form onSubmit={handleSubmit(onSubmit)} className=" form-container mt-5 mb-3 p-3" >
+                    <input {...register("productName")} defaultValue={product?.name} className="form-control mb-3 " />
+                    <input {...register("name", { required: true })} placeholder={user.displayName} required className="form-control mb-3 " />
+                    <input {...register("email")} value={user.email} className="form-control mb-3 " />
+                    <textarea {...register("description")} value={product?.description} className="form-control mb-3 " />
+                    <input {...register("address")} placeholder="Address" required className="form-control mb-3 " />
+                    <input type="submit" value='Confirm Order' style={{ height: '35px' }} className="btn btn-success mt-3 " />
+                </form>
+            </div>
         </div>
     );
 };

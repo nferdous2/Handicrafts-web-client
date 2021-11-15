@@ -1,7 +1,7 @@
 import Button from '@restart/ui/esm/Button';
 import React, { useState } from 'react';
 import { Alert, Form } from 'react-bootstrap';
-
+import './makeAdmin.css'
 const MakeAdmin = () => {
     const [email, setEmail] = useState('');
     const [done, setDone] = useState((false));
@@ -28,14 +28,14 @@ const MakeAdmin = () => {
         e.preventDefault()
     }
     return (
-        <div>
-            <Form onSubmit={handleAdmin} className=" m-auto p-5">
+        <div className="admin-body p-3">
+            <Form onSubmit={handleAdmin} className=" p-5">
                 <h4>Make An Admin </h4>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control className="w-25 m-auto p-3" type="email" placeholder="Enter email" onBlur={handleOnBlur} />
                 </Form.Group>
-                <Button variant="primary" type="submit" >
+                <Button variant="primary" type="submit" className="submit-btn" >
                     Submit
                 </Button>
             </Form>
