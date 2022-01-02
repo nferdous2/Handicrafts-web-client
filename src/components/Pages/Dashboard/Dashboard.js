@@ -5,9 +5,7 @@ import useAuth from '../../../hooks/useAuth';
 import './Dashboard.css'
 const Dashboard = () => {
     const { logOut } = useAuth()
-    function clicked() {
-        alert('Payment System comming Soon');
-    }
+
 
     return (
         <div className="table-settings">
@@ -15,12 +13,17 @@ const Dashboard = () => {
                 <Row className="justify-content-between align-items-center">
                     <Col xs={9} lg={5}>
                         <ListGroup>
-                            <ListGroup.Item action onClick={clicked}>Pay</ListGroup.Item>
+                            <Link to="/payment">
+                                <ListGroup.Item action >Pay </ListGroup.Item>
+                            </Link>
                             <Link to="/myOrders">
                                 <ListGroup.Item action >My Orders </ListGroup.Item>
                             </Link>
                             <Link to="/addreview">
                                 <ListGroup.Item action to="/addreview">Review </ListGroup.Item>
+                            </Link>
+                            <Link to="/addProduct">
+                                <ListGroup.Item action to="/addProduct">Add product </ListGroup.Item>
                             </Link>
 
                             <ListGroup.Item action onClick={logOut}>Log Out </ListGroup.Item>

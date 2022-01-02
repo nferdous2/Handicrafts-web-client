@@ -8,18 +8,17 @@ const AddProduct = () => {
     const onSubmit = data => {
         console.log(data);
 
-        axios.post('https://fast-chamber-11448.herokuapp.com/addReview', data)
+        axios.post('https://fast-chamber-11448.herokuapp.com/addProducts', data)
             .then(res => {
                 if (res.data.insertedId) {
-                    alert('Review added successfully');
+                    alert('Product added successfully');
                     reset();
                 }
-
             })
     }
     return (
         <div className="add-review">
-            <h2>Please AddReview</h2>
+            <h2>Add a Product</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <input {...register("Product name", { required: true, maxLength: 20 })} placeholder="Product Name" className="p-3 mb-2 w-50" />
                 <br />
