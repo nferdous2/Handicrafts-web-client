@@ -1,47 +1,25 @@
-import React, { useEffect, useState } from "react";
+
+import React, { useEffect, useState } from 'react';
+import { Row } from 'react-bootstrap';
+import Order from '../Order/Order';
+import './MyOrders.css'
 const MyOrders = () => {
-    const [product, setProduct] = useState([]);
+    const [orders, setOrders] = useState([])
     useEffect(() => {
-        fetch("https://fast-chamber-11448.herokuapp.com/products")
-            .then((res) => res.json())
-            .then((result) => setProduct(result));
-    }, []);
-    //DELETE A product
-    const handleDelete = id => {
-        const proceed = window.confirm('Are you sure ,you want to delete');
-        if (proceed) {
-            const url = `https://fast-chamber-11448.herokuapp.com/products/${id}`;
-            fetch(url, {
-                mathod: 'DELETE'
-            })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.deletedCount > 0) {
-                        alert('Deleted Sucessfully');
-                        const remainingProducts = product.filter(user => user._id !== id);
-                        setProduct(remainingProducts);
-                    }
-                })
-        }
-    }
-    console.log(product)
+        fetch('https://fast-chamber-11448.herokuapp.com/myOrders')
+            .then(res => res.json())
+            .then(data => setOrders(data))
+    })
 
     return (
-        <div>
-            <div className="allproducts d-flex justify-content-center align-items-center">
-                <div className="row">
-                    {product?.map((pd) => (
-                        <div className="col-md-6 ">
-                            <div className="product border border p-2 m-2">
-                                <h1>{pd.name}</h1>
-                                <h6>{pd.price}</h6>
-                                <h6>{pd.description}</h6>
-                                <button onClick={handleDelete} className="btn btn-danger p-1 m-2">Delete</button>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
+        <div id="myOrder">
+            <h2 className='text-center text-black'><span className="heading">Your</span> Orders</h2>
+            <Row xs={1} sm={12} md={3} className="gx-4 gy-5 px-5">
+                {
+
+                    orders.map(order => <Order order={order}></Order>)
+                }
+            </Row>
         </div>
     );
 };

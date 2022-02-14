@@ -14,7 +14,7 @@ const Review = () => {
     return (
         <div className="p-5">
             <h1>
-                Happy Clients says
+                What <span className="heading">Our </span> Clients <span className="heading">Says</span>
             </h1>
             <Row xs={1} md={3} className=" gx-4 gy-5 pt-3 px-5">
                 {

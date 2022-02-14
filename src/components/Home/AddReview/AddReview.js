@@ -18,9 +18,9 @@ const AddReview = () => {
             })
     }
     return (
-        <div className="add-review">
-            <h2>Please AddReview</h2>
-            <form onSubmit={handleSubmit(onSubmit)}>
+        <div className=" w-75 m-auto p-3">
+            <h2>Please <span className="heading">Put </span>Your <span className="heading">Valuable</span> Opinion</h2>
+            <form onSubmit={handleSubmit(onSubmit)} className="adds">
                 <input {...register("name", { required: true, maxLength: 20 })} placeholder="Name" className="p-3 mb-2 w-50" />
                 <br />
                 <textarea {...register("opinion")} placeholder="opinion" className="p-3 mb-2 w-50" /><br />

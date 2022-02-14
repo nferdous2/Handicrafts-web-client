@@ -13,7 +13,7 @@ import Products from '../../Pages/Products/Products';
 const Home = () => {
     return (
         <div className="homePage" id="home">
-            <Banner />
+            #            <Banner />
             {/* products */}
             <Products />
             <Review />

@@ -8,7 +8,7 @@ const AddProduct = () => {
     const onSubmit = data => {
         console.log(data);
 
-        axios.post('https://fast-chamber-11448.herokuapp.com/addProducts', data)
+        axios.post('https://fast-chamber-11448.herokuapp.com/products', data)
             .then(res => {
                 if (res.data.insertedId) {
                     alert('Product added successfully');
@@ -17,14 +17,14 @@ const AddProduct = () => {
             })
     }
     return (
-        <div className="add-review">
-            <h2>Add a Product</h2>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <input {...register("Product name", { required: true, maxLength: 20 })} placeholder="Product Name" className="p-3 mb-2 w-50" />
-                <br />
-                <textarea {...register("Description")} placeholder="Description" className="p-3 mb-2 w-50" /><br />
-                <textarea {...register("price")} placeholder="Price" className="p-3 mb-2 w-50" /><br />
-                <input type="submit" />
+        <div className='m-auto p-2 w-75'>
+            <form onSubmit={handleSubmit(onSubmit)} className="adds">
+                <h2> Add <span className='heading'>A</span> Product</h2>
+                <input {...register("img")} placeholder="Product Img Url" required />
+                <input {...register("name", { required: true, maxLength: 20 })} placeholder='Product name' required />
+                <input {...register("price")} placeholder="Price" required />
+                <input {...register("Description")} placeholder="Description" required />
+                <input type="submit" value='Add Product' className='m-2' />
             </form>
         </div>
     );

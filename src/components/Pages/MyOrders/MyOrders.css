@@ -1,0 +1,19 @@
+.service-style{
+    font-weight: 900;
+    padding: 25px;
+    margin: 5px;
+    margin-bottom: 0;
+    color: black;
+    border: 2px solid #0a4e53;
+    border-radius: 5px;
+box-shadow:  10px 10px #05353a;
+    height: 95%; 
+    background-color: rgba(236, 236, 236, 0.788);
+}
+.services{
+    overflow: hidden;
+    height: 100%;
+}
+.order-text{
+    font-size: small;
+} 
