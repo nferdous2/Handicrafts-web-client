@@ -11,7 +11,7 @@ const AddReview = () => {
         axios.post('https://fast-chamber-11448.herokuapp.com/addReview', data)
             .then(res => {
                 if (res.data.insertedId) {
-                    alert('Review added successfully');
+                    alert('Thank You,Review added successfully');
                     reset();
                 }
 
@@ -21,10 +21,12 @@ const AddReview = () => {
         <div className=" w-75 m-auto p-3">
             <h2>Please <span className="heading">Put </span>Your <span className="heading">Valuable</span> Opinion</h2>
             <form onSubmit={handleSubmit(onSubmit)} className="adds">
+                <h4>Your <span className="heading">Name</span></h4>
                 <input {...register("name", { required: true, maxLength: 20 })} placeholder="Name" className="p-3 mb-2 w-50" />
-                <br />
+
+                <h4><span className="heading">Your</span> Opinion</h4>
                 <textarea {...register("opinion")} placeholder="opinion" className="p-3 mb-2 w-50" /><br />
-                <input type="submit" />
+                <input type="submit" className="p-3 mb-2 w-50" />
             </form>
         </div>
     );

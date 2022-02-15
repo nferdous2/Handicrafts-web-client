@@ -60,8 +60,10 @@ const Register = () => {
                         </form>
                         <p>Already have an account? </p>
                         <Link to="/login">
-                            <h5>Please,Login</h5>
-                        </Link>
+                            <input
+                                className="login-btn  w-50 text-white"
+                                value="<< Continue To Login"
+                            />                        </Link>
 
                     </Card.Text>
                 </Card.Body>

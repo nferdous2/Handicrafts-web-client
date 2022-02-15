@@ -59,8 +59,10 @@ const Login = () => {
                         </form>
                         <p className="text-white">Are You New User? </p>
                         <Link to="/register">
-                            <h5 className="text-white text-decoration none">Please,Register</h5>
-                        </Link>
+                            <input
+                                className="login-btn w-50 text-white"
+                                value="Registration Page >>"
+                            />                            </Link>
 
                     </Card.Text>
                 </Card.Body>
