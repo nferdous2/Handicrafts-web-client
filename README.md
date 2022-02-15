@@ -1,6 +1,6 @@
 # Project Name
 Decore 'n Craft
-# Live site link (https://gifted-darwin.netlify.app/)
+# Live site link (https://handicrafts-a749a.web.app/)
 ## About this Project
 # we provide Cash On Delivery System.
 # Simple system for placing order.
