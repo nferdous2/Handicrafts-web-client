@@ -18,7 +18,7 @@ const AddProduct = () => {
     }
     return (
         <div className='m-auto p-2 w-75'>
-            <form onSubmit={handleSubmit(onSubmit)} className="adds">
+            <form onSubmit={handleSubmit(onSubmit)} className="adds p-3">
                 <h2> Add <span className='heading'>A</span> Product</h2>
                 <h5><span className='heading'>Product</span> Image</h5>
                 <input {...register("img")} placeholder="Product Img Url" required />
@@ -30,7 +30,7 @@ const AddProduct = () => {
                 <input {...register("price")} placeholder="Price" required />
                 <h5><span className='heading'>Product</span> Description</h5>
                 <input {...register("Description")} placeholder="Description" required />
-                <input type="submit" value='Add Product' className='m-2' />
+                <input type="submit" value='Add Product' className='m-3' />
             </form>
         </div>
     );

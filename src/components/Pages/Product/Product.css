@@ -15,7 +15,8 @@
     height: 95%; 
 }
 .products{
-    
+    border : none;
+
     overflow: hidden;
     height: 100%;
 }

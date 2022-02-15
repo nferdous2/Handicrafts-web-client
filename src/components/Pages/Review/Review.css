@@ -7,11 +7,10 @@
 .review-card{
     box-sizing: border-box;
     border-radius: 5px;
-    box-shadow: 10px 10px rgba(44, 2, 38, 0.767);
+    box-shadow: 10px 10px rgba(34, 3, 29, 0.767);
     height: 280px;
     width: 350px;
-    font-weight: 600;
-}
+    font-weight: 600;}
 .review-card:hover{
     transition: all 0.1s;
     font-weight: 600;

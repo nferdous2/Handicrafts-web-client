@@ -60,7 +60,7 @@ const Login = () => {
                         <p className="text-white">Are You New User? </p>
                         <Link to="/register">
                             <input
-                                className="login-btn w-50 text-white"
+                                className="click-btn w-50"
                                 value="Registration Page >>"
                             />                            </Link>
 

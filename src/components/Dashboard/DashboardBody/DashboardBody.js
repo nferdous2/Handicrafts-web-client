@@ -4,6 +4,7 @@ import './DashboardBody.css'
 const DashboardBody = () => {
     return (
         <div className='dash-container'>
+            {/* dashboard items */}
             <DashboardHome />
         </div>
     );
