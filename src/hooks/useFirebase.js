@@ -56,7 +56,7 @@ const useFirebase = () => {
     }, [])
 
     useEffect(() => {
-        fetch(`https://fast-chamber-11448.herokuapp.com/users${user.email}`)
+        fetch(`https://handicrafts-web-server.onrender.com/users${user.email}`)
             .then(res => res.json())
             .then(data => setAdmin(data.admin))
     }, [user.email])
@@ -68,7 +68,7 @@ const useFirebase = () => {
     }
     const saveUser = (email, displayName) => {
         const user = { email, displayName };
-        fetch('https://fast-chamber-11448.herokuapp.com/users', {
+        fetch('https://handicrafts-web-server.onrender.com/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

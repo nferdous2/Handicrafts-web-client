@@ -5,7 +5,7 @@ import Product from '../Product/Product';
 const Products = () => {
     const [products, setproducts] = useState([])
     useEffect(() => {
-        fetch('https://fast-chamber-11448.herokuapp.com/products')
+        fetch('https://handicrafts-web-server.onrender.com/products')
             .then(res => res.json())
             .then((data) => {
                 setproducts(data.slice(0, 6))

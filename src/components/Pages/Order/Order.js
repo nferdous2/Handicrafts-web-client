@@ -8,7 +8,7 @@ const Order = ({ order }) => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure to delete order?')
         if (proceed) {
-            fetch(`https://fast-chamber-11448.herokuapp.com/myOrders/${id}`, {
+            fetch(`https://handicrafts-web-server.onrender.com/myOrders/${id}`, {
                 method: 'DELETE'
             }).then(res => res.json())
                 .then(data => {

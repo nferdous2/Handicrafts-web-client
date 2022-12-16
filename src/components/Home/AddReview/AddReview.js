@@ -8,7 +8,7 @@ const AddReview = () => {
     const onSubmit = data => {
         console.log(data);
 
-        axios.post('https://fast-chamber-11448.herokuapp.com/addReview', data)
+        axios.post('https://handicrafts-web-server.onrender.com/addReview', data)
             .then(res => {
                 if (res.data.insertedId) {
                     alert('Thank You,Review added successfully');

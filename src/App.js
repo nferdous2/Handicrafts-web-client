@@ -46,12 +46,6 @@ function App() {
             <Route path="/payment">
               <Payment />
             </Route>
-            {/* <PrivateRoute path="/addProduct">
-              <AddProduct />
-            </PrivateRoute> */}
-            {/* <PrivateRoute path="/myOrders">
-              <MyOrders />
-            </PrivateRoute> */}
             <PrivateRoute path="/purchase/:productId">
               <Purchase />
             </PrivateRoute>

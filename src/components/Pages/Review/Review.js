@@ -7,7 +7,7 @@ import './Review.css'
 const Review = () => {
     const [reviews, setReviews] = useState([])
     useEffect(() => {
-        fetch('https://fast-chamber-11448.herokuapp.com/review')
+        fetch('https://handicrafts-web-server.onrender.com/review')
             .then(res => res.json())
             .then((data) => setReviews(data))
     }, [])
@@ -16,7 +16,7 @@ const Review = () => {
             <h1>
                 What <span className="heading">Our </span> Clients <span className="heading">Says</span>
             </h1>
-            <Row xs={1} md={3} className=" gx-4 gy-5 pt-3 px-5">
+            <Row xs={1} md={3} className=" gx-4 gy-5 m-2">
                 {
 
                     reviews.map(review => <Reviews review={review}></Reviews>)
